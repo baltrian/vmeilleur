@@ -10,13 +10,14 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.sites.models import Site
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from djgeojson.serializers import Serializer as GeoJSONSerializer
 
 #from .forms import ContributionForm
 from .models import Vin
 
-
+@login_required
 def consulter(request):
 
     vins = Vin.objects.all()
@@ -35,3 +36,4 @@ def post(self, request, **kwargs):
         return HttpResponseRedirect( '/consulter' )
 
     return HttpResponseRedirect('/connexion')
+
