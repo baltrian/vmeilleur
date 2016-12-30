@@ -35,6 +35,9 @@
 		input[type=submit] {
 			margin: 8px;
 		}		
+		button{
+
+		}
 	</style>
 
 {% endblock %}
@@ -69,7 +72,9 @@
 
 	   <!-- Container (Contact Section) -->
 	{% if user.is_authenticated %}
-    	<div>Vous êtes connecté, <strong> {{ user.username }} </strong> ! </div>
+		<div class="container-fluid container1 text-xs-center">
+    		<a href="/consulter"  class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Consulter les vins</a>
+    	</div>
     {% else %}
 		<div id="login" class="container-fluid container1 text-xs-center">
 	    	<p><em>Réservé aux membres.</em></p>
