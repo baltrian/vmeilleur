@@ -8,7 +8,8 @@ from appli.views import consulter
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^connexion$', auth_views.login),
+    # On import les vues de Django, avec un nom spécifique
+	url(r'^connexion', auth_views.login, {'template_name': 'connexion.html'}),
 
     #url(r'^$', contribuer, name="contribuer"),
     #url(r'^$', name="contribuer"),

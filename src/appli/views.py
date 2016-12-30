@@ -9,6 +9,7 @@ import xml.etree.ElementTree
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.sites.models import Site
+from django.contrib.auth import authenticate, login
 
 from djgeojson.serializers import Serializer as GeoJSONSerializer
 
