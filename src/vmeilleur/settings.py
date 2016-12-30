@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'leaflet',
     'djgeojson',
-    #'contributions'
+    'appli'
 ]
 
 MIDDLEWARE_CLASSES = [
