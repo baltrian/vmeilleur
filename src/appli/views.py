@@ -23,3 +23,15 @@ def consulter(request):
     return render(request, 'consulter.html', {
         'vins': vins,
     })
+
+
+def post(self, request, **kwargs):
+
+    username = request.POST.get('username', False)
+    password = request.POST.get('password', False)
+    user = authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        login(request, user)
+        return HttpResponseRedirect( '/consulter' )
+
+    return HttpResponseRedirect('/connexion')
