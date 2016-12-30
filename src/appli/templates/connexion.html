@@ -6,10 +6,67 @@
   {% leaflet_js %}
   {% leaflet_css %}
 
+	<style type="text/css">
+
+		.container1 {
+    		padding: 50px 50px;
+    		background: #2d2d30;
+    		color: white;
+		}
+		.container2 {
+    		padding: 50px 50px;
+    		color: #2d2d30;
+    		background: white;
+		}		
+		#concept-general{
+			margin-bottom: 10px;
+		}
+		#pitch{
+			font-size: 20px;
+		}
+		img {
+			padding-bottom: 10px;
+		}
+		input[type=text] {
+			margin: 8px;
+    		border: 1px solid #ccc;
+    		padding: 4px 15px;
+		}
+		input[type=submit] {
+			margin: 8px;
+		}		
+	</style>
+
 {% endblock %}
 
 
 {% block body %}
+
+    	<!-- Pitch -->
+	<div id="pitch" class="container2 text-xs-center">
+		<div class="row">
+			<div id="concept-general" class="container-fluid">
+				<h3>Le concept</h3>
+				<p><em>Les meilleurs vins de dix à trente euros.</em></p>
+			</div>
+			<div class="col-md-3"></div>
+			<div id="vins" class="col-md-3 col-sm-12">
+				{% load static %}
+				<img src="{% static "Images/bouteille_vin_inconnu.png" %}" alt="Wine bottle" style="width:100px;height:100px;"><br/>
+				<img src="{% static "Images/bouteille_vin_inconnu.png" %}" alt="Wine bottle" style="width:100px;height:100px;"><br/>
+				<img src="{% static "Images/bouteille_vin_inconnu.png" %}" alt="Wine bottle" style="width:100px;height:100px;"><br/>
+			</div>
+			<div id="concept" class="col-md-3 col-sm-12">
+				<br/>
+				<p>Une sélection de 3 vins par mois...  </p>
+				<p>2 vins rouges et 1 vin blanc... </p>
+				<p>Entre 10€ et 30€... </p>
+				<p>Livraison par relation à disposition des clients </p>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+
 	   <!-- Container (Contact Section) -->
 	<div id="login" class="container-fluid container1 text-xs-center">
     	<p><em>Réservé aux membres.</em></p>
