@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static include_anything leaflet_tags %}
+
+{% block head %}
+  {{ block.super }}
+  {% leaflet_js %}
+  {% leaflet_css %}
+
+{% endblock %}
+
+
+{% block body %}
+      {% for vin in vins %}
+      <div class="row">
+       {{ vin.nom }} ({{ vin.millesime }})
+      </div>
+      {% endfor %}
+{% endblock body %}
+
+
+{% block bottom %}
+	{{ block.super }}
+
+
+{% endblock %}

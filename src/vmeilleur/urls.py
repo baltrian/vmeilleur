@@ -2,7 +2,7 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-#from contributions.views import contribuer, consulter, resultat
+from appli.views import consulter
 
 
 urlpatterns = [
@@ -11,7 +11,7 @@ urlpatterns = [
     #url(r'^$', contribuer, name="contribuer"),
     #url(r'^$', name="contribuer"),
     #url(r'^resultat/(?P<pk>\d+)/$', resultat, name="resultat"),
-    #url(r'^consulter/', consulter, name="consulter"),
+    url(r'^consulter/', consulter, name="consulter"),
 
     #url(r'^contribuer_json/$', contribuer, name="contribuer_json"),
 ]

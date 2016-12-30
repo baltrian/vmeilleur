@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import Vin, Cepage, Assemblage
+from .models import Vin, Cepage, Assemblage, Appelation
 
 
 class AssemblageInline(admin.TabularInline):
@@ -10,9 +10,9 @@ class AssemblageInline(admin.TabularInline):
 
 
 class VinAdmin(admin.ModelAdmin):
-	list_display = ('id','nom', 'millesime', 'couleur', 'cepages', )
+	list_display = ('id','nom', 'millesime', 'couleur', 'appelation',)
 	inlines = (AssemblageInline,)
-	list_editable = ('nom', 'millesime', 'couleur', 'cepages',)
+	list_editable = ('nom', 'millesime', 'couleur', 'appelation',)
 
 
 class CepageAdmin(admin.ModelAdmin):
@@ -20,6 +20,12 @@ class CepageAdmin(admin.ModelAdmin):
 	list_editable = ('nom',)
 	#inlines = (AssemblageInline,)
 
+class AppelationAdmin(admin.ModelAdmin):
+    list_display = ('id','nom',)
+    list_editable = ('nom',)
+    #inlines = (AssemblageInline,)
+
 
 admin.site.register(Vin, VinAdmin)
 admin.site.register(Cepage, CepageAdmin)
+admin.site.register(Appelation, AppelationAdmin)
