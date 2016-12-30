@@ -12,7 +12,7 @@
 {% block body %}
       {% for vin in vins %}
       <div class="row">
-       {{ vin.nom }} ({{ vin.millesime }})
+       {{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})
       </div>
       {% endfor %}
 {% endblock body %}

@@ -22,7 +22,6 @@ class Appelation(models.Model):
     def __unicode__(self):
         return self.nom
 
-
 class Vin(models.Model):
     nom = models.CharField(max_length=120)
     millesime = models.CharField(max_length=4, blank=True, null=True)
