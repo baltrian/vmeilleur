@@ -59,12 +59,14 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-    <a href="/connexion">
-      <div id="vins" class="container-fluid title-container text-xs-center">
+    
+    <div id="vins" class="container-fluid title-container text-xs-center">
+      <a href="/connexion">
         {% load static %}
         <img src="{% static "Images/Logo.png" %}" alt="Wine bottle" style="width:180px;height:180px;" ><br/>
-      </div>
-    </a>
+      </a>
+    </div>
+    
 
       {% block body %}
       {% endblock body %}
