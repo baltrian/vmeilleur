@@ -3,7 +3,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from appli.views import consulter
+from appli.views import consulter, login
 
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # On import les vues de Django, avec un nom spécifique
 	url(r'^connexion', auth_views.login, {'template_name': 'connexion.html'}),
+	url(r'^login', auth_views.login, {'template_name': 'login.html'}),	
 
     #url(r'^$', contribuer, name="contribuer"),
     #url(r'^$', name="contribuer"),

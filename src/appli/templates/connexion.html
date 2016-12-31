@@ -12,7 +12,8 @@
     		padding: 50px 50px;
 		}
 		.container2 {
-    		padding: 50px 50px;
+			padding-top: 20px;
+			padding-bottom: 20 px;
 		}		
 		#concept-general{
 			margin-bottom: 10px;
@@ -75,15 +76,9 @@
     		<a href="/consulter"  class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Consulter les vins</a>
     	</div>
     {% else %}
-		<div id="login" class="container-fluid container1 text-xs-center">
-	    	<p><em>Réservé aux membres.</em></p>
-	    	<form action="/connexion" method ="post" role ="form">
-	    		{% csrf_token %}
-			  	<input type="text" name="username" placeholder="Login"><br>
-			  	<input type="password" name="password" placeholder="Mot de passe"><br>
-			  	<input type="submit" value="Valider">
-			</form>
-		</div>
+		<div class="container-fluid container1 text-xs-center">
+    		<a href="/login"  class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
+    	</div>
 	{% endif %}
 {% endblock body %}
 

@@ -25,6 +25,10 @@ def consulter(request):
         'vins': vins,
     })
 
+def login(request):
+
+    return render(request, 'login.html', {})
+
 
 def post(self, request, **kwargs):
 
