@@ -10,13 +10,15 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     # On import les vues de Django, avec un nom spécifique
-	url(r'^connexion', auth_views.login, {'template_name': 'connexion.html'}),
 	url(r'^login', auth_views.login, {'template_name': 'login.html'}),	
 
     #url(r'^$', contribuer, name="contribuer"),
     #url(r'^$', name="contribuer"),
     #url(r'^resultat/(?P<pk>\d+)/$', resultat, name="resultat"),
-    url(r'^consulter/', consulter, name="consulter"),
+    url(r'^consulter[//]*', consulter, name="consulter"),
+
+
+    url(r'^[A-Za-z0-9-//]*$', auth_views.login, {'template_name': 'connexion.html'}),
 
     #url(r'^contribuer_json/$', contribuer, name="contribuer_json"),
 ]

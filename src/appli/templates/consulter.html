@@ -6,15 +6,21 @@
   {% leaflet_js %}
   {% leaflet_css %}
 
+  	<style type="text/css">
+
+	</style>
+
 {% endblock %}
 
 
 {% block body %}
-      {% for vin in vins %}
-      <div class="row">
-       {{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})
-      </div>
-      {% endfor %}
+	<div id="vins" class="container-fluid container1 text-xs-center">
+	    {% for vin in vins %}
+	    <div class="row">
+	    {{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})
+	    </div>
+	    {% endfor %}
+	</div>
 {% endblock body %}
 
 

@@ -34,10 +34,21 @@
         text-shadow: 0px 0px 7px #FFFFF0;
     }
 
+    body{
+        background: url('/static/Images/verre-de-vin-fonds-boise.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size:100% auto;
+        background-color: black;
+        color:white;
+    }
+
   </style>
 
     {% endblock head %}
   </head>
+  {% load static %}
   <body>
   <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -48,10 +59,12 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div id="vins" class="container-fluid title-container text-xs-center">
-      {% load static %}
-      <img src="{% static "Images/Logo.png" %}" alt="Wine bottle" style="width:180px;height:180px;"><br/>
-    </div>
+    <a href="/connexion">
+      <div id="vins" class="container-fluid title-container text-xs-center">
+        {% load static %}
+        <img src="{% static "Images/Logo.png" %}" alt="Wine bottle" style="width:180px;height:180px;" ><br/>
+      </div>
+    </a>
 
       {% block body %}
       {% endblock body %}
