@@ -22,12 +22,14 @@
 			font-size: 20px;
 		}
 		.button{
-			font-family: Verdana;
+			font-family : inherit;
 			background-color: black;
 			color: white;
-			padding: 10px 20px;
 			border-radius: 10px;
 			border: 2px solid #e33f58;
+			width: 260px;
+			height: 60px;
+			font-size: 20px;
 		}
 		.button:hover { 
     		background-color: white;
@@ -43,17 +45,23 @@
 {% block body %}
 
     	<!-- Pitch -->
-	<div id="pitch" class="container2 text-xs-center">
-		<div id="concept-general" class="container-fluid">
-			<h3>Le concept</h3>
+	<div id="pitch" class="container-fluid container1 text-xs-center">
+
+	    <button class="button" type="submit" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+	    	<b>Le concept</b>
+	    </button>
+
+
+		<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+		  	<div class="card-block">
 			<p><em>Les meilleurs vins de dix à trente euros.</em></p>
 			<br/>
 			<p>Une sélection de 3 vins par mois...  </p>
 			<p>2 vins rouges et 1 vin blanc... </p>
 			<p>Entre 10€ et 30€... </p>
 			<p>Livraison par relation à disposition des clients </p>
+		   	</div>
 		</div>
-
 	</div>
 
 	   <!-- Container (Contact Section) -->
@@ -66,7 +74,7 @@
     {% else %}
     	<div class="container-fluid container1 text-xs-center">
     		<a href="/login">
-    			<button class="btn btn-secondary btn-lg active" type="submit">Login</button>
+    			<button class="button" type="submit"><b>Login</b></button>
     		</a>
     	</div>
 	{% endif %}
