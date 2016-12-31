@@ -7,7 +7,16 @@
   {% leaflet_css %}
 
   	<style type="text/css">
-
+  		.vins{
+  			margin-left:15%;
+  			margin-right:15%;
+  		}
+  		.vin{
+  			height:400px;
+  			width:200px;
+  			border-radius: 10px;
+			border: 2px solid #e33f58;
+  		}
 	</style>
 
 {% endblock %}
@@ -15,11 +24,23 @@
 
 {% block body %}
 	<div id="vins" class="container-fluid container1 text-xs-center">
-	    {% for vin in vins %}
 	    <div class="row">
-	    {{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})
+	    {% for vin in vins %}
+	    {% if forloop.counter0|divisibleby:4 %}
+	    <div class="col-sm-2"></div>
+	    {% endif %}
+	    <div class="col-sm-2">
+	    	<p> {{forloop.counter}}</p>
+	    	<p>{{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})</p>
 	    </div>
+	    {% if forloop.counter|divisibleby:4 %}
+	    <div class="col-sm-2"></div>
+	    </div>
+	    <div class="row">
+	    {% endif %}
+
 	    {% endfor %}
+	    </div>	    
 	</div>
 {% endblock body %}
 
