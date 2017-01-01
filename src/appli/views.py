@@ -42,8 +42,6 @@ def post(self, request, **kwargs):
     return HttpResponseRedirect('/connexion')
 
 
-#def informationVin(reques):
- ###   vin = Vin.get();
-  ###      return render(request, 'informationVin.html', {
-  ##      'vin': vin,
-  #  })
+def informationVin(request, id):
+    vin = Vin.objects.get(id=id);
+    return render(request, 'informationVin.html', {'vin': vin,})
