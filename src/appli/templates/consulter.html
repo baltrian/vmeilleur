@@ -38,13 +38,15 @@
 	    {% endif %}
 	    <div class="col-sm-2">
 	    	<div class ="vin">
-	    	{% load static %}
-	    		<img href=/informationVin?id={{ vin.image }}" src="media/{{ vin.image }}" class="imgVin" alt="Wine bottle" style="width:90%;" ><br/>
+	    		<a href="/informationVin/{{ vin.id }}/">
+	    		{% load static %}
+	    		<img src="{{ vin.image.url }}" class="imgVin" alt="Wine bottle" style="width:90%;" ><br/>
 				<!--img src="{% static "Images/bouteille_vin_inconnu.png" %}" class="imgVin" alt="Wine bottle" style="width:230px;height:230px;" ><br/-->
 		    	<div id="description">
 		    		<p>{{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})</p>
 		    		<!--input type="number" name="quantity" min="1" max="100"-->
 		    	</div>
+				</a>
 		    </div>
 	    </div>
 	    {% if forloop.counter|divisibleby:4 %}
