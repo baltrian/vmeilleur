@@ -33,6 +33,23 @@ class Vin(models.Model):
     def __unicode__(self):
         return self.nom
 
+    # Construit une chaîne de caractère représentant l'assemblage
+    def get_assemblage(self):
+        s = " "
+        sC = []
+        sP = []
+        setCepages = self.cepages.all()
+        setAssemblage = Assemblage.objects.filter(vin=self).all()
+        for cepage in setCepages :    
+            sC.append(cepage.nom)
+        for assemblage in setAssemblage :
+            sP.append(assemblage.pourcentage)
+        for i in range(len(sC)) :
+            if (i > 0) :
+                s = s + ", "
+            s = s + sC[i] + " (" + str(sP[i]) + "%)"
+        return s
+
 
 class Assemblage(models.Model):
     vin = models.ForeignKey(Vin, on_delete=models.CASCADE)

@@ -43,5 +43,6 @@ def post(self, request, **kwargs):
 
 
 def informationVin(request, id):
-    vin = Vin.objects.get(id=id);
-    return render(request, 'informationVin.html', {'vin': vin,})
+    vin = Vin.objects.get(id=id)
+    assemblage = vin.get_assemblage()
+    return render(request, 'informationVin.html', {'vin': vin,'assemblage': assemblage, })
