@@ -3,7 +3,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from appli.views import consulter, login
+from appli.views import consulter, login#, informationVin
 
 
 urlpatterns = [
@@ -16,7 +16,7 @@ urlpatterns = [
     #url(r'^$', name="contribuer"),
     #url(r'^resultat/(?P<pk>\d+)/$', resultat, name="resultat"),
     url(r'^consulter[//]*', consulter, name="consulter"),
-
+    #url(r'^informationVin[//]*', informationVin, name="informationVin"),
 
     url(r'^[A-Za-z0-9-//]*$', auth_views.login, {'template_name': 'connexion.html'}),
 

@@ -10,9 +10,9 @@ class AssemblageInline(admin.TabularInline):
 
 
 class VinAdmin(admin.ModelAdmin):
-	list_display = ('id','nom', 'millesime', 'couleur', 'appelation',)
+	list_display = ('id','nom', 'millesime', 'couleur', 'appelation','image',)
 	inlines = (AssemblageInline,)
-	list_editable = ('nom', 'millesime', 'couleur', 'appelation',)
+	list_editable = ('nom', 'millesime', 'couleur', 'appelation','image',)
 
 
 class CepageAdmin(admin.ModelAdmin):

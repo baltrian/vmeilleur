@@ -39,7 +39,8 @@
 	    <div class="col-sm-2">
 	    	<div class ="vin">
 	    	{% load static %}
-				<img src="{% static "Images/bouteille_vin_inconnu.png" %}" class="imgVin" alt="Wine bottle" style="width:230px;height:230px;" ><br/>
+	    		<img src="media/{{ vin.image }}" class="imgVin" alt="Wine bottle" style="width:230px;height:230px;" ><br/>
+				<!--img src="{% static "Images/bouteille_vin_inconnu.png" %}" class="imgVin" alt="Wine bottle" style="width:230px;height:230px;" ><br/-->
 		    	<div id="description">
 		    		<p>{{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})</p>
 		    	</div>

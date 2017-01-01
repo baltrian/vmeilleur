@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static include_anything leaflet_tags %}
+
+{% block head %}
+  {{ block.super }}
+  {% leaflet_js %}
+  {% leaflet_css %}
+
+  	<style type="text/css">
+	</style>
+
+{% endblock %}
+
+
+{% block body %}
+
+{% endblock body %}
+
+
+{% block bottom %}
+	{{ block.super }}
+
+
+{% endblock %}
