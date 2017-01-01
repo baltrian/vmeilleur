@@ -24,6 +24,11 @@
   		#description{
   			margin-top: 10px;
   		}
+  		#commande{
+  			padding-top: 10px;
+  			border-top:#e33f58;
+  			border-top-style: ridge;
+  		}
 	</style>
 
 {% endblock %}
@@ -42,7 +47,10 @@
 	    		<img src="{{ vin.image.url }}" class="imgVin" alt="Wine bottle" style="width:90%;" ><br/>
 		    	<div id="description">
 		    		<p>{{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})</p>
-		    		<!--input type="number" name="quantity" min="1" max="100"-->
+		    		<form id="commande">
+		    			Quantité : <input type="number" name="quantity" min="1" max="100">
+		    			<input type="submit" value="OK">
+		    		</form>
 		    	</div>
 				</a>
 		    </div>
