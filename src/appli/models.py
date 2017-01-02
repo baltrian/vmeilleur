@@ -6,6 +6,7 @@ from collections import defaultdict, Counter
 from django.db import models
 from django.db.models import Count
 from django.contrib.gis.db import models as gis_models
+from django.contrib.gis.geos import GEOSGeometry
 from django.utils.text import slugify
 
 
@@ -22,10 +23,11 @@ class Appelation(models.Model):
     @property
     def geometry(self):
         geoms = [commune.geometry for commune in self.commune_set.all()]
-        geom = MultiPolygon()
-        for g in geoms: 
-            geom = geom + g
-            return geom
+        #geom = GeometryCollection()
+        #for g in geoms: 
+        #    geom = geom + g
+        #return geom
+        #return GEOSGeometry.unary_union(geoms)
 
 
 class Commune(gis_models.Model):

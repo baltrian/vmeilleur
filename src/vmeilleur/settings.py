@@ -119,10 +119,11 @@ MEDIA_ROOT = '/var/www/media'
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (47, 2.0),
-    'DEFAULT_ZOOM': 6,
+    'DEFAULT_ZOOM': 5,
     'MIN_ZOOM': 3,
     'MAX_ZOOM': 18,
-    'TILES': 'http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+    #'TILES': 'http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+    'TILES': 'https://tile.jawg.io/light/{z}/{x}/{y}.png?api-key=community',
 }
 
 SITE_ID = 1

@@ -15,15 +15,23 @@ from django.contrib.auth.decorators import login_required
 from djgeojson.serializers import Serializer as GeoJSONSerializer
 
 #from .forms import ContributionForm
-from .models import Vin
+from .models import Vin, Commune, Appelation
 
 @login_required
 def consulter(request):
-
+    geojson = GeoJSONSerializer().serialize(Commune.objects.all(),
+          geometry_field='geometry',
+          properties=('insee', 'geometry'))
+    #geojson1 = GeoJSONSerializer().serialize(Appelation.objects.all(),
+    #      geometry_field='geometry',
+    #      properties=('nom', 'geometry'))
     vins = Vin.objects.all()
     return render(request, 'consulter.html', {
         'vins': vins,
+        'geojson': geojson,
+        #'geojson1': geojson1,
     })
+
 
 def login(request):
 

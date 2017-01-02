@@ -35,7 +35,7 @@
 
 
 {% block body %}
-{% leaflet_map "carte" %}
+
 	<div class="container-fluid container1 text-xs-center">
 	    <div class="row padding-bottom">
 	    {% for vin in vins %}
@@ -62,13 +62,49 @@
 	    <div class="row">
 	    {% endif %}
 	    {% endfor %}
-	    </div>	    
+	    </div>	  
+	    {% leaflet_map "carte" %}  
 	</div>
 {% endblock body %}
 
 
 {% block bottom %}
 	{{ block.super }}
+<script type="text/javascript">
+  $(window).on('map:init', function (e) {
+      function onEachFeature(feature, layer) {
+      if (feature.properties) {
+          var content_img = '';
+          if(feature.properties.feature !== null){
+          var content_img = "<img src='"+feature.properties.feature+"' style='width:100%' />"
+          }
+          var content = content_img+'<b>'+feature.properties.nom+" ("+feature.properties.commune_label+") </b><br>"+feature.properties.short_description + "<br/><br/><div> <a target='_blank' href='"+feature.properties.url+"' class='btn btn-outline-primary btn-block btn-sm' role='button'>Détail</a> </div>";
 
+          layer.bindPopup(content);
+          }
+      }
+      var detail = e.originalEvent ?
+                   e.originalEvent.detail : e.detail;
+
+      L.geoJson({{ geojson|safe }}, {
+        style: function(feature) {
+          switch (feature.properties.state) {
+              case 'labeled':
+                return {color: "rgba(99, 255, 132, 0.8)", "opacity": 1, fillColor:"rgba(99, 255, 132, 0.8)"};
+              case 'engaged':
+                return {color: "rgba(99, 125, 132, 0.4)", "opacity": 1, fillColor:"rgba(99, 125, 132, 0.4)"};
+              case 'charte':
+                return {color: "rgba(99, 0, 132, 0.2)", "opacity": 1, fillColor:"#dddddd"};
+              case 'none':
+                return {color: "rgba(100, 100, 100, 0.2)", "opacity": 1, fillColor:"#dddddd"};
+          }
+        },
+        onEachFeature: onEachFeature,
+        pointToLayer: function(feature, latlng) {
+          return new L.CircleMarker(latlng, {radius: 1, fillOpacity: 0.85});
+        }
+      }).addTo(detail.map);
+  });
+</script>
 
 {% endblock %}
