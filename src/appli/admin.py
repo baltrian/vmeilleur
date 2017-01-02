@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from .models import Vin, Cepage, Assemblage, Appelation
+from .models import Vin, Cepage, Assemblage, Appelation, Commune
 
 
 class AssemblageInline(admin.TabularInline):
@@ -26,6 +26,11 @@ class AppelationAdmin(admin.ModelAdmin):
     #inlines = (AssemblageInline,)
 
 
+class CommuneAdmin(admin.ModelAdmin):
+    list_display = ('id', 'insee')
+    list_editable = ('insee',)
+
 admin.site.register(Vin, VinAdmin)
 admin.site.register(Cepage, CepageAdmin)
 admin.site.register(Appelation, AppelationAdmin)
+admin.site.register(Commune, CommuneAdmin)
