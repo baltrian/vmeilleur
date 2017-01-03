@@ -6,6 +6,7 @@ from collections import defaultdict, Counter
 from django.db import models
 from django.db.models import Count
 from django.contrib.gis.db import models as gis_models
+from django.contrib.gis.geos import GEOSGeometry
 from django.utils.text import slugify
 
 
@@ -19,8 +20,21 @@ class Cepage(models.Model):
 class Appelation(models.Model):
     nom = models.CharField(max_length=120)
 
-    def __unicode__(self):
-        return self.nom
+    @property
+    def geometry(self):
+        geoms = [commune.geometry for commune in self.commune_set.all()]
+        #geom = GeometryCollection()
+        #for g in geoms: 
+        #    geom = geom + g
+        #return geom
+        #return GEOSGeometry.unary_union(geoms)
+
+
+class Commune(gis_models.Model):
+    insee = models.CharField(max_length=5)
+    geometry = gis_models.GeometryCollectionField(blank=True, null=True)
+    appelation = models.ForeignKey(Appelation, null=True, blank=True)
+
 
 class Vin(models.Model):
     nom = models.CharField(max_length=120)
