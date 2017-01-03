@@ -45,7 +45,13 @@
 	    <div class="col-sm-2">
 	    	<div class ="vin">
 	    		<a href="/informationVin/{{ vin.id }}/">
+	    		{% if vin.image %}
 	    		<img src="{{ vin.image.url }}" class="imgVin" alt="Wine bottle" style="width:90%;" ><br/>
+	    		{% else %}
+	    		{% load static %}
+	    		<img src="{% static "Images/bouteille_vin_inconnu.png" %}"  class="imgVin" alt="Wine bottle" style="width:90%;" ><br/>
+	    		{% endif %}
+	    		</a>
 		    	<div id="description">
 		    		<p>{{ vin.nom }} ({{ vin.millesime }}) {{ vin.appelation }} - ({{ vin.couleur }})</p>
 		    		<form id="commande">
@@ -53,7 +59,6 @@
 		    			<input type="submit" value="OK">
 		    		</form>
 		    	</div>
-				</a>
 		    </div>
 	    </div>
 	    {% if forloop.counter|divisibleby:4 %}

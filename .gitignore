@@ -51,3 +51,5 @@ data/backup
 data/log
 
 *.pyc
+.env
+data/media/vin/Logo_Miniature.png
