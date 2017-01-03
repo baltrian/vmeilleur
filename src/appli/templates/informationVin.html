@@ -14,6 +14,14 @@
 			background-color: black;
 			opacity: 0.8;
   		}
+  		.avis{
+  			font-size : 14px;
+  		}
+  		hr
+		{
+    		display: inline-block;
+    		width: 100%;
+		}
 	</style>
 
 {% endblock %}
@@ -22,12 +30,14 @@
 {% block body %}
 	<div class="container-fluid container1 text-xs-center">
 	    <div class="row padding-bottom">
-	    <div class="col-sm-2">
-	    </div>
-	    <div class="col-sm-2">
+	    <!-- <div class="col-sm-1">
+	    </div>-->
+	    <div class="col-sm-2 vin">
 	    	<div>
 	    		<img src="{{ vin.image.url }}" class="imgVin" alt="Wine bottle" style="width:90%;" ><br/>
 		    </div>
+	    </div>
+	    <div class="col-sm-1">
 	    </div>
 	    <div class="col-sm-5 vin">
 	    	<p align=center> CARACTERISTIQUES </p>
@@ -46,7 +56,39 @@
 	    	<p align=left>Nez : </p>
 	    	<p align=left>Bouche : </p>
 	    	<p align=center> ACCORD METS / VIN </p>
-	    	<p align=left>à déguster sur des viandes rouges,... </p>
+	    	<p align=left>à déguster sur des viandes rouges,...</p>
+	    </div>
+	    <div class="col-sm-1">
+	    </div>
+	    <div class="col-sm-3 vin">
+	    	<p align=center> AVIS EXPERTS </p>
+			<div class="vin avis" id="partners">
+	    		<p align=center>Experts</p>
+	    		<p align=left>blablabla </p>
+	    	</div>
+	    	<p align=center>  </p>
+	    	<p align=center> AVIS </p>
+	    	<p align=center>  </p>
+	    	<div class="vin avis" id="partners">
+	    		<p align=center>Partners</p>
+	    		<p align=left>blablabla </p>
+	    	</div>
+	    	<p align=center>  </p>
+	    	<div class="vin avis" id="partners">
+	    		<p align=center>Partners</p>
+	    		<p align=left>blablabla </p>
+	    	</div>
+	    	<p align=center>  </p>
+	    	<div class="vin avis" id="partners">
+	    		<p align=center>Partners</p>
+	    		<p align=left>blablabla </p>
+	    	</div>
+	    	<p align=center>  </p>
+	    	<div class="vin avis" id="partners">
+	    		<p align=center>Partners</p>
+	    		<p align=left>blablabla </p>
+	    	</div>
+	    	<p align=center>  </p>
 	    </div>
 	</div>
 
