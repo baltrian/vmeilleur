@@ -19,17 +19,13 @@ from .models import Vin, Commune, Appelation
 
 @login_required
 def consulter(request):
-    geojson = GeoJSONSerializer().serialize(Commune.objects.all(),
+    geojson = GeoJSONSerializer().serialize(Appelation.objects.all(),
           geometry_field='geometry',
-          properties=('insee', 'geometry'))
-    #geojson1 = GeoJSONSerializer().serialize(Appelation.objects.all(),
-    #      geometry_field='geometry',
-    #      properties=('nom', 'geometry'))
+          properties=('nom', 'geometry'))
     vins = Vin.objects.all()
     return render(request, 'consulter.html', {
         'vins': vins,
         'geojson': geojson,
-        #'geojson1': geojson1,
     })
 
 
@@ -53,4 +49,11 @@ def post(self, request, **kwargs):
 def informationVin(request, id):
     vin = Vin.objects.get(id=id)
     assemblage = vin.get_assemblage()
-    return render(request, 'informationVin.html', {'vin': vin,'assemblage': assemblage, })
+    geojson = GeoJSONSerializer().serialize(Appelation.objects.all(),
+        geometry_field='geometry',
+        properties=('nom', 'geometry'))
+    return render(request, 'informationVin.html', {
+        'vin': vin,
+        'assemblage': assemblage,
+        'geojson': geojson,
+         })

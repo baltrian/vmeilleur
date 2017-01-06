@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import requests
+import json
+
 from collections import defaultdict, Counter
 
 from django.db import models
 from django.db.models import Count
 from django.contrib.gis.db import models as gis_models
-from django.contrib.gis.geos import GEOSGeometry
+from django.contrib.gis.geos import GEOSGeometry, GeometryCollection
 from django.utils.text import slugify
 
 
@@ -23,11 +26,14 @@ class Appelation(models.Model):
     @property
     def geometry(self):
         geoms = [commune.geometry for commune in self.commune_set.all()]
-        #geom = GeometryCollection()
-        #for g in geoms: 
-        #    geom = geom + g
-        #return geom
-        #return GEOSGeometry.unary_union(geoms)
+        geom = []
+        for g in geoms:
+            geom = geom + g
+        return GeometryCollection(geom).unary_union
+
+    def centroide(self):
+        return self.geometry.centroid
+    #return GEOSGeometry.unary_union(geoms)
 
 
 class Commune(gis_models.Model):

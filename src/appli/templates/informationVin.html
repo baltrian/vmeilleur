@@ -23,6 +23,9 @@
 	<div class="container-fluid container1 text-xs-center">
 	    <div class="row padding-bottom">
 	    <div class="col-sm-2">
+	    		<div>
+	    			{% leaflet_map "carte" %}
+	    		</div> 
 	    </div>
 	    <div class="col-sm-2">
 	    	<div>
@@ -34,7 +37,7 @@
 	    	<p align=left>Domaine : </p>
 	    	<p align=left>Nom : {{ vin.nom }}</p>
 	    	<p align=left>Région : </p>
-	    	<p align=left>Appellation : {{ vin.appelation }}</p>
+	    	<p align=left>Appellation : {{ vin.appelation.nom }}</p>
 	    	<p align=left>Millésime : {{ vin.millesime }}</p>
 	    	<p align=left>Couleur : {{ vin.couleur }}</p>
 	    	<p align=left>Assemblage : {{ assemblage }}</p>
@@ -55,6 +58,37 @@
 
 {% block bottom %}
 	{{ block.super }}
+	<script type="text/javascript">
+	$(window).on('map:init', function (e) {
+      function onEachFeature(feature, layer) {
+      if (feature.properties) {
+          var content_img = '';
+          if(feature.properties.feature !== null){
+          }
+          var content = "<p style='color: grey;'> Appelation = "+feature.properties.nom+"</p>";
+          layer.bindPopup(content);
+          }
+      }
+      var detail = e.originalEvent ?
+                   e.originalEvent.detail : e.detail;
 
+      var marker = L.marker([{{ vin.appelation.centroide.y|safe }}, {{ vin.appelation.centroide.x|safe }}]).bindPopup("<p style='color: grey;'>{{ vin.appelation.nom|safe }}</p>");
+      marker.addTo(detail.map);
+      
+      detail.map.setView([ {{ vin.appelation.centroide.y|safe }}, {{ vin.appelation.centroide.x|safe }} ], 9);             
+      L.geoJson({{ geojson|safe }}, {
+        style: function(feature) {
+          switch (feature.properties.model) {
+              case 'appli.appelation':
+                return {color: "rgba(255, 125, 132, 0.8)", "opacity": 0.4, fillColor:"rgba(255, 125, 132, 1)"};
+          }
+        },
+        onEachFeature: onEachFeature,
+        pointToLayer: function(feature, latlng) {
+          return new L.CircleMarker(latlng, {radius: 1, fillOpacity: 0.85});
+        }
+      }).addTo(detail.map);
+      });
+	</script>
 
 {% endblock %}
