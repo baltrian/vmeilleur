@@ -41,7 +41,7 @@ class Appelation(models.Model):
 class Commune(gis_models.Model):
     insee = models.CharField(max_length=5)
     geometry = gis_models.GeometryCollectionField(blank=True, null=True)
-    appelation = models.ForeignKey('Appelation', null=True, blank=True)
+    appelations = models.ManyToManyField('Appelation', null=True, blank=True)
 
 
 class Vin(models.Model):

@@ -70,3 +70,4 @@ src/appli/models.pyc
 data/log/nginx/app-access.log
 src/appli/__init__.pyc
 *.pyc
+src/appli/models.pyc
