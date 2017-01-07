@@ -65,3 +65,8 @@ src/appli/models.pyc
 *.log
 *.jpg
 *.log
+*.log
+*.pyc
+data/log/nginx/app-access.log
+src/appli/__init__.pyc
+*.pyc
