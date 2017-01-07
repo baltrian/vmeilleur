@@ -63,3 +63,5 @@ src/vmeilleur/urls.pyc
 src/appli/models.pyc
 *.pyc
 *.log
+*.jpg
+*.log
