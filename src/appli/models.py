@@ -23,6 +23,9 @@ class Cepage(models.Model):
 class Appelation(models.Model):
     nom = models.CharField(max_length=120)
 
+    def __unicode__(self):
+        return u'%s' % (self.nom)
+
     @property
     def geometry(self):
         geoms = [commune.geometry for commune in self.commune_set.all()]
@@ -33,13 +36,12 @@ class Appelation(models.Model):
 
     def centroide(self):
         return self.geometry.centroid
-    #return GEOSGeometry.unary_union(geoms)
 
 
 class Commune(gis_models.Model):
     insee = models.CharField(max_length=5)
     geometry = gis_models.GeometryCollectionField(blank=True, null=True)
-    appelation = models.ForeignKey(Appelation, null=True, blank=True)
+    appelation = models.ForeignKey('Appelation', null=True, blank=True)
 
 
 class Vin(models.Model):
@@ -47,7 +49,7 @@ class Vin(models.Model):
     millesime = models.CharField(max_length=4, blank=True, null=True)
     image = models.ImageField(upload_to="vin/", blank=True, null=True)
     couleur = models.CharField(max_length=7)
-    appelation = models.ForeignKey(Appelation, null=True, blank=True)
+    appelation = models.ForeignKey('Appelation', null=True, blank=True)
     cepages = models.ManyToManyField(Cepage, through='Assemblage')
 
     def __unicode__(self):

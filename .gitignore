@@ -51,3 +51,15 @@ data/backup
 data/log
 
 *.pyc
+.env
+data/media/vin/Logo_Miniature.png
+*.pyc
+*.pyc
+*.pyc
+data/log/nginx/app-error.log
+*.log
+src/vmeilleur/urls.pyc
+*.pyc
+src/appli/models.pyc
+*.pyc
+*.log
